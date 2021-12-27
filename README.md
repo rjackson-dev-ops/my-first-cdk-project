@@ -11,6 +11,17 @@ Here you will learn to use CDK to deploy different AWS resources. All the `sampl
      - Python Pip - `yum install -y python-pip`
      - Virtualenv - `pip3 install virtualenv`
 
+### For Ubuntu
+
+```
+pyenv virtualenv 3.8.5 cdk
+pyenv shell cdk
+python3 ensurepip --upgrade
+python3 -m pip install --upgrade pip
+python3 -m pip install --upgrade virtualenv
+
+```
+
 1. ## ⚙️ Setting up the environment
 
    For example, If you are looking to learn how to deploy an EC2 instance with the latest AMI in any region, This branch is tagged as `ec2_with_latest_ami_in_any_region`.
