@@ -14,11 +14,23 @@ Here you will learn to use CDK to deploy different AWS resources. All the `sampl
 ### For Ubuntu
 
 ```
+
 pyenv virtualenv 3.8.5 cdk
 pyenv shell cdk
 python3 ensurepip --upgrade
 python3 -m pip install --upgrade pip
 python3 -m pip install --upgrade virtualenv
+
+npm --version
+6.14.8
+npm install -g aws-cdk
+
+cdk --version
+2.3.0 (build beaa5b2)
+
+pip3 install --upgrade aws-cdk.core
+
+
 
 ```
 
@@ -31,7 +43,49 @@ python3 -m pip install --upgrade virtualenv
    cd my-first-cdk-project
    ```
 
+```
+# On Ubuntu
+
+# In VScode using '~/.pyenv/versions/cdk/bin/python'
+
+# Added the
+aws-cdk-lib==2.3.0
+constructs>=10.0.0,<11.0.0
+mkdir first-project
+cd first-project/
+cdk init app --language python
+
+# Already in a virutalenv so maybe that's why it's just using the same virutalenv, nice
+source .venv/bin/activate
+
+# Install Requirements
+
+ pip3 install -r requirements.txt
+
+
+```
+
 1. ## 🚀 Deployment using AWS CDK
+
+```
+# On Ubuntu
+
+# Creates staging resources including staging bucket/IAM roles
+
+ cdk bootstrap
+ ⏳  Bootstrapping environment aws://489445168095/us-east-1...
+Trusted accounts for deployment: (none)
+Trusted accounts for lookup: (none)
+Using default execution policy of 'arn:aws:iam::aws:policy/AdministratorAccess'. Pass '--cloudformation-execution-policies' to customize.
+CDKToolkit: creating CloudFormation changeset...
+[··························································] (0/12)
+
+1:34:09 AM | CREATE_IN_PROGRESS   | AWS::CloudFormation::Stack | CDKToolkit
+
+
+# Deploy stack
+cdk deploy
+```
 
    ```bash
    # If you DONT have cdk installed
@@ -51,7 +105,27 @@ python3 -m pip install --upgrade virtualenv
    cdk deploy
    ```
 
-1. ## 🧹 CleanUp
+3. Updating stack
+   - Adding Bucket Name
+
+```
+cdk ls
+
+    raise JSIIError(resp.error) from JavaScriptError(resp.stack)
+jsii.errors.JSIIError: Invalid S3 bucket name (value: MyFirstBucket-12-28-2021)
+Bucket name must only contain lowercase characters and the symbols, period (.) and dash (-) (offset: 0)
+Bucket name must start and end with a lowercase character or number (offset: 0)
+Subprocess exited with error 1
+
+(cdk) rjackson@RJACK-SERVER:first-project$ cdk ls
+FirstProjectStack
+
+
+cdk synth
+cdk deploy
+
+```
+4. ## 🧹 CleanUp
 
    If you want to destroy all the resources created by the stack, Execute the below command to delete the stack, or _you can delete the stack from console as well_
 
